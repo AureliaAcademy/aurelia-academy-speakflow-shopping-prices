@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SpeakFlow A1 – Shopping &amp; Prices | AURELIA ACADEMY</title>
+<style>
+:root{--bg:#0B0716;--s:#140E25;--s2:#1C1535;--t:#F3EFFF;--m:#B6A9D6;--a:#8B5CF6;--a2:#A78BFA;--g:#D4B26A;--b:rgba(167,139,250,.24);--ok:#34D399;--no:#FB7185;--gl:rgba(28,21,53,.62)}
+:root[data-theme=light]{--bg:#F6F2FF;--s:#fff;--s2:#EFE8FF;--t:#1B1236;--m:#54467D;--a:#6D28D9;--a2:#6D28D9;--g:#85641B;--b:rgba(109,40,217,.22);--ok:#047857;--no:#BE123C;--gl:rgba(255,255,255,.75)}
+*{box-sizing:border-box}html{scroll-padding-top:130px}
+body{margin:0;min-height:100dvh;display:flex;flex-direction:column;background:var(--bg);color:var(--t);font:16px/1.55 Inter,"Segoe UI Variable","SF Pro Text",system-ui,sans-serif;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-2;background:linear-gradient(var(--b) 1px,transparent 1px) 0 0/48px 48px,linear-gradient(90deg,var(--b) 1px,transparent 1px) 0 0/48px 48px;opacity:.35}
+body::after{content:"";position:fixed;z-index:-1;width:60vmax;height:60vmax;left:-15vmax;top:-20vmax;background:radial-gradient(circle,rgba(139,92,246,.35),transparent 65%);animation:drift 26s ease-in-out infinite alternate;pointer-events:none}
+@keyframes drift{to{transform:translate(40vw,25vh)}}
+header{position:fixed;top:0;left:0;right:0;z-index:20;background:var(--gl);backdrop-filter:blur(16px);border-bottom:1px solid var(--b);padding:calc(8px + env(safe-area-inset-top,0px)) 16px 8px;transition:box-shadow .3s}
+header.sc{box-shadow:0 8px 30px rgba(0,0,0,.35)}
+.hr{display:flex;align-items:center;gap:12px;flex-wrap:wrap;max-width:1180px;margin:auto}
+.logo{font-weight:800;letter-spacing:.14em;font-size:13px}.logo b{color:var(--g)}
+.sp{flex:1}
+.tabs{display:flex;gap:6px;overflow-x:auto;max-width:100%;padding:2px}
+.pill{border:1px solid var(--b);background:transparent;color:var(--m);border-radius:99px;padding:5px 13px;font:600 13px inherit;cursor:pointer;white-space:nowrap}
+.pill.on{background:linear-gradient(135deg,var(--a),#6D28D9);color:#fff;border-color:transparent}
+.clock{font:700 17px ui-monospace,Consolas,monospace;color:var(--g);border:1px solid var(--b);border-radius:12px;padding:3px 12px}
+.clock.w{color:var(--no);border-color:var(--no);animation:pl 1s infinite}@keyframes pl{50%{opacity:.55}}
+.ic{border:1px solid var(--b);background:transparent;color:var(--t);border-radius:12px;width:36px;height:36px;cursor:pointer;font-size:16px}
+main{flex:1;width:100%;max-width:1180px;margin:0 auto;padding:96px 16px 40px}
+body.tst main{padding-top:120px;padding-bottom:110px}body.tst footer{margin-bottom:76px}
+.in{animation:fx .5s both}.back{animation:bx .5s both}
+@keyframes fx{from{opacity:0;transform:translateX(34px)}}@keyframes bx{from{opacity:0;transform:translateX(-34px)}}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center;min-height:70dvh;animation:up .7s both}
+@keyframes up{from{opacity:0;transform:translateY(22px)}}
+.eb{color:var(--g);letter-spacing:.2em;font-size:12px;font-weight:700;text-transform:uppercase}
+h1{font-size:clamp(40px,7vw,78px);line-height:1;letter-spacing:-.04em;margin:.2em 0;background:linear-gradient(120deg,var(--t),var(--a2) 55%,var(--g));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--m);font-size:18px;max-width:34em}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:24px}
+.stat{background:var(--gl);border:1px solid var(--b);border-radius:18px;padding:12px}.stat b{display:block;font-size:26px;color:var(--a2)}.stat span{font-size:12px;color:var(--m)}
+.card{background:var(--gl);backdrop-filter:blur(18px);border:1px solid var(--b);border-radius:26px;padding:24px}
+label{font-size:13px;font-weight:700;color:var(--m);display:block;margin:14px 0 6px}
+input[type=text],textarea{width:100%;background:var(--s);color:var(--t);border:1px solid var(--b);border-radius:14px;padding:12px 14px;font:inherit;outline:none}
+input:focus,textarea:focus{border-color:var(--a2);box-shadow:0 0 0 3px rgba(139,92,246,.25)}
+textarea{min-height:140px;resize:vertical}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.btn{border:0;border-radius:14px;padding:12px 22px;font:700 15px inherit;cursor:pointer;background:linear-gradient(135deg,var(--a),#6D28D9);color:#fff;transition:transform .15s}
+.btn:active{transform:scale(.96)}.btn.g{background:transparent;border:1px solid var(--b);color:var(--t)}.btn:disabled{opacity:.4;cursor:not-allowed}.btn.full{width:100%;margin-top:18px}
+details{margin-top:14px;color:var(--m);font-size:14px}summary{cursor:pointer;font-weight:700;color:var(--a2)}
+.ph{margin-bottom:18px}.ph h2{margin:0;font-size:30px;letter-spacing:-.02em}.ph p{color:var(--m);margin:4px 0}
+.trk{display:flex;align-items:center;gap:12px;background:var(--s2);border:1px solid var(--g);border-radius:16px;padding:10px 14px;margin:10px 0}
+.trk b{color:var(--g)}.trk span{flex:1;font-size:14px}.trk small{color:var(--m)}
+.q{background:var(--gl);border:1px solid var(--b);border-radius:20px;padding:16px 18px;margin:12px 0;opacity:0;transform:translateY(16px);transition:.5s}.q.v{opacity:1;transform:none}
+.q .n{color:var(--g);font-weight:800;font-size:13px}.q .p{font-size:20px;font-weight:600;margin:4px 0 10px;white-space:pre-line}
+.row{display:flex;gap:8px}.mic{flex:none;width:46px;border-radius:14px;border:1px solid var(--b);background:var(--s2);color:var(--t);cursor:pointer;font-size:18px}.mic.rec{background:var(--no);color:#fff;animation:pl 1s infinite}
+.nav{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.nv{width:34px;height:34px;border-radius:50%;border:1px solid var(--b);background:transparent;color:var(--m);font-weight:700;cursor:pointer}.nv.d{background:var(--a);color:#fff;border-color:transparent}
+.bot{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--gl);backdrop-filter:blur(16px);border-top:1px solid var(--b);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px))}
+.bot .hr{gap:14px}.bar{flex:1;height:8px;background:var(--s2);border-radius:9px;overflow:hidden;min-width:60px}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--a),var(--g));transition:width .4s}
+.res{animation:up .7s both}.score{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
+.ring{--p:0;width:190px;height:190px;border-radius:50%;background:conic-gradient(var(--a2) calc(var(--p)*1%),var(--s2) 0);display:grid;place-items:center}.ring div{width:150px;height:150px;border-radius:50%;background:var(--s);display:grid;place-items:center;text-align:center;font-size:38px;font-weight:800}.ring small{display:block;font-size:13px;color:var(--m);font-weight:600}
+.kp{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}.kp span{border:1px solid var(--b);border-radius:12px;padding:6px 14px;background:var(--s)}
+.tw{overflow-x:auto;margin-top:18px}table{border-collapse:collapse;width:100%;font-size:14px}th,td{border-bottom:1px solid var(--b);padding:8px 10px;text-align:left;vertical-align:top}th{color:var(--g);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.st-Correct{color:var(--ok)}.st-Incorrect,.st-Blank{color:var(--no)}.st-Review{color:var(--g)}
+.mod{position:fixed;inset:0;z-index:50;background:rgba(5,3,12,.7);display:grid;place-items:center;padding:20px}.mod .card{max-width:420px;background:var(--s)}
+footer{text-align:center;padding:22px 16px calc(22px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--b);color:var(--m);font-size:13px;background:var(--s)}footer b{color:var(--g);letter-spacing:.2em}
+.act{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}.tl{margin-top:18px;border:1px dashed var(--b);padding:12px 16px;border-radius:14px}
+@media(max-width:820px){.hero{grid-template-columns:1fr;min-height:0}.stats{grid-template-columns:repeat(2,1fr)}.score{grid-template-columns:1fr;justify-items:center}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.q{opacity:1;transform:none}}
+@media print{@page{size:A4;margin:14mm}body{background:#fff;color:#000}body::before,body::after,header,.bot,.act,.mod{display:none!important}main{padding:0!important;max-width:none}.card,.stat,.kp span{background:#fff;color:#000;border-color:#999}.ring div{background:#fff}*{color:#000!important;-webkit-text-fill-color:#000!important;backdrop-filter:none!important}footer{background:#fff;margin:0!important}}
+
+.pill.dn{color:var(--ok);border-color:var(--ok)}span.pill{cursor:default}
+.dots{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.dt{width:34px;height:34px;border-radius:50%;border:1px solid var(--b);background:transparent;color:var(--m);font-weight:700;cursor:pointer}.dt:disabled{opacity:.35;cursor:not-allowed}.dt.cur{outline:2px solid var(--a2)}.dt.ok{background:var(--ok);color:#04130c;border-color:transparent}.dt.no{background:var(--no);color:#fff;border-color:transparent}
+.sx{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--b)}.sn{width:26px;height:26px;border-radius:50%;background:var(--a);color:#fff;display:grid;place-items:center;font-weight:800;font-size:13px;flex:none}.sc{flex:1;display:flex;flex-direction:column}.sc small{color:var(--m)}.dd{color:var(--g);letter-spacing:.2em;margin-left:6px}
+.mic.big{width:auto;padding:12px 22px;font:700 15px inherit;background:linear-gradient(135deg,#E11D48,#9F1239);color:#fff;border:0}.mic.big:disabled{opacity:.35;cursor:not-allowed}.mic.big.rec{animation:pl 1s infinite}
+.lv{min-height:44px;margin:6px 0;padding:10px 14px;border:1px dashed var(--no);border-radius:14px;color:var(--m);font-style:italic}
+.fb{border-radius:16px;padding:12px 16px;margin-top:10px;border:1px solid}.fb.ok{border-color:var(--ok)}.fb.no{border-color:var(--no)}.fb b{font-size:17px}.fb.ok b{color:var(--ok)}.fb.no b{color:var(--no)}.fb small,.ct{color:var(--m);display:block}
+.wr{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0;font-size:18px}.w{padding:2px 8px;border-radius:8px;border:1px solid var(--b)}.w.ok{border-color:var(--ok);color:var(--ok)}.w.bad,.w.miss{border-color:var(--no);color:var(--no);text-decoration:underline wavy}.w i{display:block;font-size:11px;color:var(--m);font-style:normal;text-decoration:none}
+.tip{color:var(--g);font-size:13px;display:block}.fl{color:var(--m);padding-left:20px;line-height:1.9}
+.cl{list-style:none;padding:0;margin:8px 0}.cl li{padding:3px 0}.cl .s1{color:var(--ok)}.cl .s0{color:var(--no)}.cl .s2{color:var(--g)}
+.q.v .p{font-size:24px}
+</style>
+</head>
+<body>
+<header id="hd"></header>
+<main id="app"></main>
+<footer><b>AURELIA ACADEMY</b><br>Contact: 0964 964 264 | Ms. Angie<br>© 2026 Aurelia Academy. All rights reserved.</footer>
+<div id="bt"></div>
+<script>
+/* ===== TIME (seconds) – proposed durations taken from the lesson timetable ===== */
+const TIME={d1:45*60,d2:45*60,fin:30*60};
+
+const W=['shirt','T-shirt','jeans','dress','shoes','hat','jacket','bag','red','blue','black','white'];
+const NW={10:'ten',15:'fifteen',20:'twenty',25:'twenty five',30:'thirty',35:'thirty five',50:'fifty',80:'eighty',100:'one hundred'};
+const N=s=>(s||'').toLowerCase().replace(/[’‘]/g,"'").replace(/\$\s?(\d+)/g,'$1 dollars').replace(/\d+/g,m=>NW[m]||m).replace(/-/g,' ').replace(/[^a-z0-9 ]/g,'').replace(/\b(it|that|there) is\b/g,'$1s').replace(/\bthey are\b/g,'theyre').replace(/\bi will\b/g,'ill').replace(/\s+/g,' ').trim();
+const ok=(a,r)=>a.some(x=>x.startsWith('re:')?new RegExp(x.slice(3)).test(N(r)):N(x)===N(r));
+const wd=(ins,tr)=>({t:'Read Aloud',ins,tr,pp:.5,it:W.map(w=>({p:w,a:[w,w.replace('-','')]}))});
+const ITEM='\\b(shirt|t shirt|jeans|dress|shoes|hat|jacket|bag)\\b',SZ='\\b(small|medium|large)\\b',CL='\\b(red|blue|black|white)\\b';
+const DEC='(ill take it|too expensive)',
+PR='\\b(ten|fifteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|one hundred)\\b.*dollars';
+const FR='(?=.*i like shopping)(?=.*i usually buy)(?=.*i usually spend)(?=.*i want to buy)(?=.*because)';
+const QA=(p,a)=>({p,a});
+const yn=(y,n)=>['yes '+y,'no '+n];
+const D1=[
+ {...wd('Read each word aloud within one second.',[1,2]),t:'Part A – Flashcard Reflex'},
+ {t:'Part B – Number & Price',ins:'Say each number in words. For a price, answer with a full sentence.',tr:[3],pp:.5,it:[['10','ten'],['15','fifteen'],['20','twenty'],['25','twenty five'],['30','thirty'],['50','fifty']].map(([p,a])=>({p,a:[a]})).concat([['$10','ten'],['$15','fifteen'],['$20','twenty'],['$25','twenty five'],['$30','thirty'],['$50','fifty']].map(([p,a])=>({p,a:['its '+a+' dollars',a+' dollars']})))},
+ {t:'Part C – Chunk Builder',ins:'Repeat each sentence aloud, five times per structure.',tr:[4,5,6],pp:.5,it:[['How much is this shirt?','How much is it?'],['How much are these jeans?','How much are they?'],["It's twenty dollars. I'll take it.",'I\'ll take it.'],["It's eighty dollars. That's too expensive.",'That\'s too expensive.']].flatMap(([s])=>[1,2,3,4,5].map(i=>({p:s+'\n('+i+' / 5)',a:[s]})))},
+ {t:'Part D – Q&A Reflex',ins:'Answer each question within three seconds.',tr:[7,8],pp:.5,it:[
+  QA('Do you like shopping?',['yes i do','no i dont']),QA('What do you usually buy?',['re:^i usually buy .+']),QA('How much is this shirt? ($20)',['its twenty dollars']),QA('How much are these shoes? ($50)',['theyre fifty dollars']),QA('Do you have this in blue?',['yes we do','no we dont']),QA('What size?',['re:^(small|medium|large)( please)?$']),QA('Anything else?',['no thank you','yes please']),QA('Here you are.',['thank you'])]},
+ {t:'Part E – 30-Second Recording',ins:'Complete the four sentences below and record yourself.\n1. I like shopping. I usually buy ______.\n2. I usually spend ______ dollars.\n3. I want to buy ______ this month.\n4. I like it because it\'s ______ (nice / cheap / beautiful / good).',tr:[12],rec:1,crit:[
+  {l:'All four sentences completed',re:FR},{l:'No pause longer than 3 seconds'},{l:'Clear "dollars" (final /z/)',re:'dollars'},{l:'Uses "I\'ll take it" or "too expensive"',re:DEC}]}];
+const D2=[
+ {...wd('Read each word aloud within one second.',[]),t:'Part A – Speed Review'},
+ {t:'Part B – Speed Drill',ins:'Respond to all 20 prompts in under 40 seconds.',tr:[9],pp:.5,it:[
+  ['👕\nAsk the price.','how much is this shirt'],['👖\nAsk the price.','how much are these jeans'],['$20','its twenty dollars'],['$50','its fifty dollars'],['👟\nAsk the price.','how much are these shoes'],['👜\nAsk the price.','how much is this bag'],['$15','its fifteen dollars'],['$30','its thirty dollars'],['👕 $25','its twenty five dollars ill take it'],['🧥 $80','its eighty dollars thats too expensive'],
+  ['Do you like shopping?',['yes i do','no i dont']],['What do you usually buy?','re:^i usually buy .+'],['What size?','re:^(small|medium|large)( please)?$'],['What color?','re:^(red|blue|black|white)( please)?$'],['Anything else?','no thank you'],['Here you are.','thank you'],['Can I help you?','re:^yes please id like (a |an )?[a-z ]+$'],['How much is it? ($25)','its twenty five dollars'],['How much are they? ($50)','theyre fifty dollars'],['Do you have this in blue?',['yes we do','no we dont']]].map(([p,a])=>({p,a:[].concat(a)}))},
+ {t:'Part C – Listen & Respond',ins:'Listen to Track 10 once, then answer each question within three seconds.',tr:[10],pp:1,it:[
+  QA('What did Anna buy?',['re:(?=.*t shirt)(?=.*shoes)']),QA('How much was the T-shirt?',['re:^(it was |its )?twenty( dollars)?$']),QA('How much were the shoes?',['re:^(they were |theyre )?fifty( dollars)?$']),QA('Did she buy the bag?',['no','no she didnt']),QA('Why didn\'t she buy the bag?',['re:too expensive'])]},
+ {t:'Part D – Role-play',ins:'Complete the dialogue. Type or say what the Customer says.',tr:[11],pp:1,it:[
+  QA('Shopkeeper: Hello! Can I help you?\nCustomer: Yes, please. I\'d like ______, please.',['re:'+ITEM]),QA('Shopkeeper: What size?\nCustomer: ______, please.',['re:'+SZ]),QA('Shopkeeper: What color?\nCustomer: ______, please.',['re:'+CL]),QA('Shopkeeper: It\'s ______ dollars.\nSay the price.',['re:'+PR]),QA('Shopkeeper: It\'s thirty dollars.\nCustomer: ______ (decision + please / thank you).',['re:^(?=.*'+DEC+')(?=.*(please|thank you))'])]},
+ {t:'Part E – Speaking Challenge',ins:'Speak for 30–45 seconds.\n1. I like shopping. I usually buy ______.\n2. I usually spend ______ dollars.\n3. I want to buy ______ this month.\n4. I like it because it\'s ______.\n5. Last week, I bought ______. It was ______ dollars.',tr:[12],rec:1,crit:[
+  {l:'All five sentences completed',re:FR+'(?=.*last week i bought)'},{l:'Speaks for 30–45 seconds'},{l:'No pause longer than 3 seconds'},{l:'Clear "dollars" and "expensive"',re:'(?=.*dollars)(?=.*expensive)'}]}];
+const FN=[
+ {...wd('Say the 8 items and 4 colors. One second per word.',[]),t:'Part 1 – Vocabulary'},
+ {t:'Part 2 – Numbers',ins:'Say each number in words.',pp:.5,it:[['10','ten'],['15','fifteen'],['20','twenty'],['25','twenty five'],['30','thirty'],['50','fifty']].map(([p,a])=>({p,a:[a]}))},
+ {t:'Part 3 – Asking the Price',ins:'Ask the price of each item within three seconds.',pp:1,it:[['👕','how much is this shirt'],['👖','how much are these jeans'],['👟','how much are these shoes'],['👜','how much is this bag'],['🧥','how much is this jacket']].map(([p,a])=>({p,a:[a]}))},
+ {t:'Part 4 – Giving the Price',ins:'Give the price in a full sentence.',pp:1,it:[['$10','its ten dollars'],['$20','its twenty dollars'],['$50',['theyre fifty dollars','its fifty dollars']],['$30','its thirty dollars'],['$15',['theyre fifteen dollars','its fifteen dollars']]].map(([p,a])=>({p,a:[].concat(a)}))},
+ {t:'Part 5 – Listening',ins:'Listen to Track 13, then answer each question.',tr:[13],pp:1,it:[
+  QA('What did Anna buy?',['re:(?=.*t shirt)(?=.*shoes)(?=.*hat)']),QA('How much was the T-shirt?',['re:^(it was |its )?twenty five( dollars)?$']),QA('How much were the shoes?',['re:^(they were |theyre )?fifty( dollars)?$']),QA('Did she buy the bag?',['no','no she didnt']),QA('Why didn\'t she buy the bag?',['re:too expensive'])]},
+ {t:'Part 6 – Q&A Reflex',ins:'Answer each question within three seconds.',pp:1,it:[QA('Do you like shopping?',['yes i do','no i dont']),QA('What do you usually buy?',['re:^i usually buy .+']),QA('How much is this bag? ($35)',['its thirty five dollars']),QA('Do you have this in blue?',['yes we do','no we dont'])]},
+ {t:'Part 7 – Role-play',ins:'Perform a shopping role-play of 4–6 turns. Speak or type both roles (Shopkeeper and Customer).',rec:1,crit:[
+  {l:'Greeting',re:'(hello|can i help)'},{l:'Item: "I\'d like a ___, please."',re:'id like (a |an )?[a-z]+'},{l:'Size or color',re:'\\b(small|medium|large|red|blue|black|white)\\b'},{l:'Price with "dollars"',re:'dollars'},{l:'Decision: "I\'ll take it" / "too expensive"',re:DEC},{l:'Polite closing',re:'(here you are|thank you|youre welcome)'}]},
+ {t:'Part 8 – Speaking',ins:'Speak for 30–45 seconds using the five-sentence frame.\n1. I like shopping. I usually buy ______.\n2. I usually spend ______ dollars.\n3. I want to buy ______ this month.\n4. I like it because it\'s ______.\n5. Last week, I bought ______. It was ______ dollars.',rec:1,crit:D2[4].crit},
+ {t:'Part 9 – Error Correction',ins:'Say the corrected sentence within three seconds.',pp:1,it:[['How much is it cost?','how much is it'],['It\'s 20 dollar.','its twenty dollars']].map(([p,a])=>({p,a:[a]}))}];
+const ST={d1:{n:'Day 1',s:'Vocabulary, Numbers & Structures',time:TIME.d1,P:D1},d2:{n:'Day 2',s:'Reflex, Listening & Role-play',time:TIME.d2,P:D2},fin:{n:'Final Test',s:'Comprehensive Assessment',time:TIME.fin,P:FN}};
+
+/* ===== audio tracks: [text, repeats, pause(s), rate] ===== */
+const rp=(l,r,p)=>l.map(t=>[t,r,p]);
+const PRI=['Ten','Fifteen','Twenty','Twenty-five','Thirty','Fifty'];
+const STORY=(x,y,z)=>"Hi, I'm Anna. Last weekend, I went shopping"+(z?' at the mall':'')+". I bought a blue T-shirt. It was "+x+" dollars. I also bought a pair of shoes. They were fifty dollars. I wanted a bag, but it was too expensive. It was one hundred dollars. So I didn't buy it."+(z?" I also bought a red hat. It was fifteen dollars.":'');
+const DLG=["Hello! Can I help you?","Yes, please. I'd like a T-shirt, please.","What size?","Medium, please.","What color?","Blue, please.","It's twenty-five dollars.","I'll take it.","Here you are.","Thank you.","You're welcome."];
+const QAP=[['Do you like shopping?','Yes, I do.'],['What do you usually buy?','I usually buy clothes.'],['How much is this shirt?',"It's twenty dollars."],['How much are these shoes?',"They're fifty dollars."],['Do you have this in blue?','Yes, we do.'],['What size?','Medium, please.'],['Anything else?','No, thank you.'],['Here you are.','Thank you.']];
+const SPK="I like shopping. I usually buy clothes. I usually spend fifty dollars. I want to buy a bag this month. I like it because it's nice. Last week, I bought a T-shirt. It was twenty dollars.";
+const TR={
+1:[W.slice(0,8),'Items',rp(W.slice(0,8),3,2.5)],2:[0,'Colors',rp(W.slice(8),3,2.5)],
+3:[0,'Numbers & prices',rp(PRI,3,1.5).concat(rp(PRI.map(x=>x+' dollars'),3,2.5))],
+4:[0,'Asking prices',rp(['How much is it?','How much is this shirt?','How much is this bag?','How much is this jacket?','How much are they?','How much are these jeans?','How much are these shoes?'],5,2)],
+5:[0,'Giving prices',rp(["It's ten dollars.","It's fifteen dollars.","It's twenty dollars.","It's twenty-five dollars.","It's thirty dollars.","It's fifty dollars.","They're fifteen dollars.","They're fifty dollars."],5,2)],
+6:[0,'Deciding to buy',rp(["I'll take it.","That's too expensive.","It's twenty dollars. I'll take it.","It's eighty dollars. That's too expensive."],5,2.5)],
+7:[0,'Shopkeeper phrases',rp(['Can I help you?','What size?','What color?','Anything else?','Here you are.'],5,2)],
+8:[0,'Customer phrases',rp(["I'm just looking.",'Do you have this in blue?','Medium, please.','No, thank you.','Thank you.'],5,2)],
+9:[0,'Q&A reflex',QAP.flatMap(([q,a])=>[[q,1,3],[a,1,2],[q,1,3],[a,1,3]])],
+10:[0,'Listening',[[STORY(20),1,5,.75],[STORY(20),1,0,.95]],1],
+11:[0,'Role-play model',DLG.map(t=>[t,1,1.2]).concat(DLG.map(t=>[t,1,.8,1]))],
+12:[0,'Speaking model',[[SPK,1,3,.9],[SPK,1,0,1.05]]],
+13:[0,'Listening',[[STORY(25,0,1),1,5,.75],[STORY(25,0,1),1,0,.95]],1]};
+
+/* ===== per-part settings: L = listens required per item/track, si = seconds per item, T = part time (s), sl = story plays, q = audio is the question (not the answer), ms = model answers ===== */
+const CFG={
+ d1:[{L:2,si:20},{L:2,si:25},{L:2,si:40},{L:2,si:40},{L:1,T:240}],
+ d2:[{L:2,si:20},{L:2,si:25,ins:'Listen to the model, then say the answer or the question.'},
+  {L:1,si:45,q:1,sl:1,ins:'Listen to the story, then listen to each question and answer it.',ms:["She bought a T-shirt and shoes.","It was twenty dollars.","They were fifty dollars.","No, she didn't.","It was too expensive."]},
+  {L:2,si:50,ins:'Complete the dialogue. Listen to the model, then say what the Customer says.',ms:["Yes, please. I'd like a shirt, please.","Medium, please.","Blue, please.","It's thirty dollars.","I'll take it, please."]},{L:1,T:240}],
+ fin:[{L:2,si:20},{L:2,si:20},{L:2,si:25},{L:2,si:25},
+  {L:1,si:45,q:1,sl:1,ms:["She bought a T-shirt, shoes and a hat.","It was twenty five dollars.","They were fifty dollars.","No, she didn't.","It was too expensive."]},
+  {L:2,si:30},{L:1,T:300,tr:[11],ins:'Perform a shopping role-play of 4–6 turns. Speak both roles (Shopkeeper and Customer).'},{L:1,T:240,tr:[12]},{L:1,si:30,q:1}]};
+Object.entries(ST).forEach(([k,t])=>t.P.forEach((p,i)=>{Object.assign(p,CFG[k][i]);p.mt=p.crit?(p.tr||[])[0]:0;p.T=p.T||p.it.length*p.si+(p.q&&p.tr?90:0)}));
+const MD={'What do you usually buy?':'I usually buy clothes.','What size?':'Medium, please.','What color?':'Blue, please.','Can I help you?':"Yes, please. I'd like a shirt, please."};
+const TIPS={dollars:'say the final /z/ clearly · đọc rõ âm cuối /z/',dollar:'/ˈdɒl.ə/ · nhấn âm đầu',expensive:'ex-PEN-sive · nhấn âm thứ 2',fifteen:'fif-TEEN · nhấn âm cuối (khác fifty)',fifty:'FIF-ty · nhấn âm đầu',thirty:'THIR-ty · lưỡi đặt giữa hai hàm răng cho /θ/',shirt:'/ʃɜːt/ · "sh" chứ không phải "s"',shoes:'/ʃuːz/ · "sh" + âm cuối /z/',jeans:'/dʒiːnz/ · đọc rõ âm cuối /z/',jacket:'JAC-ket · nhấn âm đầu',twenty:'TWEN-ty',hundred:'HUN-dred',medium:'ME-dee-um',please:'âm cuối /z/ · pleez',these:'/ðiːz/ · âm cuối /z/'};
+
+/* ===== state & helpers ===== */
+const $=s=>document.querySelector(s),S={k:'d1',name:'',pi:0,tm:null,left:0,t0:null,t1:null,pm:[],it:{},cur:[],sl:[],msg:'',an:0};
+const P=()=>ST[S.k].P,fmt=n=>{n=Math.max(0,n);return String(n/60|0).padStart(2,'0')+':'+String(n%60).padStart(2,'0')};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const tot=P=>P.reduce((s,p)=>s+(p.crit?p.crit.length:p.it.length*p.pp),0),cnt=P=>P.reduce((s,p)=>s+(p.crit?p.crit.length:p.it.length),0);
+const dt=d=>d?d.toLocaleString('en-GB',{dateStyle:'medium',timeStyle:'medium'}):'—';
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+const IT=(pi,i)=>S.it[pi+'.'+i]||(S.it[pi+'.'+i]={ls:0,n:0,h:'',ok:false,df:null,cr:null,d:0});
+const att=(pi,i)=>IT(pi,i).n>0;
+const pp=pi=>{const p=P()[pi];return p.crit?[att(pi,'r')?1:0,1]:[p.it.filter((_,i)=>att(pi,i)).length,p.it.length]};
+const prog=()=>P().reduce((s,_,i)=>{const[a,t]=pp(i);return[s[0]+a,s[1]+t]},[0,0]);
+const fp=pi=>{const p=P()[pi],f=p.it.findIndex((_,j)=>!att(pi,j));return f<0?p.it.length-1:f};
+const clean=s=>s.replace(/[^\x00-\x7F]/g,'').replace(/\n\(\d \/ 5\)/,'').replace(/\s*\(\$\d+\)/,'').replace(/\s+/g,' ').trim();
+const pretty=a=>{if(!/ /.test(a)||/[A-Z.?!']/.test(a))return a;
+ let s=a.replace(/\bits\b/,"it's").replace(/\btheyre\b/,"they're").replace(/\bthats\b/,"that's").replace(/\bill\b/,"I'll").replace(/\bi\b/g,'I').replace(/\bdont\b/,"don't").replace(/\bdidnt\b/,"didn't");
+ s=s.replace(/ (that's|I'll)\b/g,(m,w)=>'. '+w[0].toUpperCase()+w.slice(1));
+ return s[0].toUpperCase()+s.slice(1)+(/^(how|do|what|can|did|why)/i.test(s)?'?':'.')};
+function mdl(p,i){const it=p.it[i];if(p.ms&&p.ms[i])return p.ms[i];const l=it.a.find(x=>!x.startsWith('re:'));return l?pretty(l):(MD[clean(it.p)]||'')}
+const exp=tr=>tr.flatMap(([t,r,pa,rt])=>Array.from({length:r},()=>[t,rt||.9,pa]));
+function aud(p,i,ls){const qt=clean(p.it[i].p),m=mdl(p,i);if(p.q)return[[qt,.9,0]];
+ const isQ=(/\?$/.test(qt)||qt==='Here you are.')&&N(qt)!==N(m);return(isQ?[[qt,.9,1.2]]:[]).concat([[m,ls%2?1:.8,0]])}
+function diff(m,h){const d=m.replace(/-/g,' ').split(/\s+/).filter(Boolean),a=d.map(N),b=N(h).split(' ').filter(Boolean),n=a.length,k=b.length;
+ const D=[...Array(n+1)].map((_,i)=>[...Array(k+1)].map((_,j)=>i?j?0:i:j));
+ for(let i=1;i<=n;i++)for(let j=1;j<=k;j++)D[i][j]=Math.min(D[i-1][j]+1,D[i][j-1]+1,D[i-1][j-1]+(a[i-1]===b[j-1]?0:1));
+ let i=n,j=k;const w=[],ex=[];
+ while(i||j){const c=i&&j?(a[i-1]===b[j-1]?0:1):9;
+  if(i&&j&&D[i][j]===D[i-1][j-1]+c){w.unshift({d:d[i-1],n:a[i-1],s:c?'bad':'ok',h:c?b[j-1]:''});i--;j--}
+  else if(i&&D[i][j]===D[i-1][j]+1){w.unshift({d:d[i-1],n:a[i-1],s:'miss'});i--}
+  else{ex.unshift(b[j-1]);j--}}
+ return{w,ex,acc:n?Math.round(w.filter(x=>x.s==='ok').length/n*100):0}}
+const aut=k=>!!k.re||/^Speaks/.test(k.l);
+
+/* ===== audio ===== */
+let VO=null,tok=0,playing=0,rc=null;const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+function pick(){const v=speechSynthesis.getVoices();VO=v.find(x=>x.lang==='en-GB')||v.find(x=>/british|uk/i.test(x.name))||null}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick}
+const say=(t,r)=>new Promise(res=>{const u=new SpeechSynthesisUtterance(t);u.lang='en-GB';if(VO)u.voice=VO;u.rate=r||.9;u.onend=u.onerror=res;speechSynthesis.speak(u)});
+function stopA(){tok++;playing=0;try{speechSynthesis.cancel()}catch(e){}}
+async function play(kind){
+ const pi=S.pi,p=P()[pi];if(S.pm[pi].st!==1||rc)return;
+ if(playing){stopA();R();return}
+ const i=p.crit?'r':S.cur[pi],it=IT(pi,i);
+ const seq=kind==='s'?exp(TR[p.tr[0]][2]):p.crit?exp(TR[p.mt][2]):aud(p,i,it.ls);
+ const my=++tok;playing=kind;R();
+ for(const [t,r,pa] of seq){if(my!==tok)return;await say(t,r);if(my!==tok)return;await sleep(pa*1000)}
+ if(my===tok){playing=0;if(kind==='s')S.sl[pi]=(S.sl[pi]||0)+1;else it.ls++;R()}}
+
+/* ===== recording & scoring ===== */
+async function micTest(b){try{const s=await navigator.mediaDevices.getUserMedia({audio:true});s.getTracks().forEach(t=>t.stop());b.textContent='🎤 Microphone ready ✓'}catch(e){b.textContent='⚠ Microphone blocked – please allow it in your browser'}}
+function rec(){
+ const pi=S.pi,p=P()[pi],i=p.crit?'r':S.cur[pi];
+ if(rc){rc.stop();return}
+ stopA();S.msg='';const r=new SR();rc=r;let alts=[],txt='',err='',tmr;const t0=Date.now();
+ r.lang='en-GB';r.continuous=!!p.crit;r.interimResults=true;r.maxAlternatives=3;
+ r.onresult=e=>{txt=[...e.results].map(x=>x[0].transcript).join(' ');if(!p.crit&&e.results[0].isFinal)alts=[...e.results[0]].map(a=>a.transcript);const l=$('#lv');if(l)l.textContent=txt||'…'};
+ r.onerror=e=>{err=e.error};
+ r.onend=()=>{clearInterval(tmr);rc=null;const d=(Date.now()-t0)/1000;if(!alts.length&&txt.trim())alts=[txt];
+  if(alts.length&&alts[0].trim())p.crit?evalCrit(pi,alts[0],d):evalItem(pi,i,alts);
+  else S.msg=err==='not-allowed'?'Microphone is blocked. Allow the microphone and try again.':'We did not hear you. Check your microphone and try again (this was not counted).';R()};
+ try{r.start()}catch(e){rc=null;return}
+ tmr=setInterval(()=>{const s=(Date.now()-t0)/1000,d=$('#rd');if(d)d.textContent=fmt(s|0);if((!p.crit&&s>10)||s>75)r.stop()},500);R()}
+function evalItem(pi,i,alts){const p=P()[pi],q=p.it[i],it=IT(pi,i),m=mdl(p,i),best=alts.find(a=>ok(q.a,a))||alts[0];
+ it.n++;it.h=best;it.ok=ok(q.a,best);it.df=diff(m,best)}
+function evalCrit(pi,txt,d){const p=P()[pi],it=IT(pi,'r');it.n++;it.h=txt;it.d=Math.round(d);
+ it.cr=p.crit.map(k=>k.re?{l:k.l,s:new RegExp(k.re).test(N(txt))?1:0}:/^Speaks/.test(k.l)?{l:k.l,s:d>=28&&d<=50?1:0}:{l:k.l,s:2});
+ it.ok=it.cr.every(x=>x.s!==0)}
+
+/* ===== views ===== */
+function hdr(mode){
+ const th='<button class="ic" id="th" aria-label="Toggle theme">◐</button>';
+ $('#hd').innerHTML='<div class="hr"><div class="logo"><b>AURELIA</b> ACADEMY</div>'+(mode==='t'?'<div class="tabs">'+P().map((p,i)=>'<span class="pill'+(i===S.pi?' on':i<S.pi?' dn':'')+'">'+(i<S.pi?'✓ ':'')+p.t.split(' – ')[0]+'</span>').join('')+'</div><div class="sp"></div><span id="pg" style="color:var(--m);font-size:13px"></span><div class="clock" id="pk" title="Time left in this part"></div><div class="clock" id="ck" title="Total time left"></div>':'<div class="sp"></div><div class="clock" id="ck">'+fmt(ST[S.k].time)+'</div>')+th+'</div>';
+ $('#th').onclick=()=>{const r=document.documentElement;r.dataset.theme=r.dataset.theme==='light'?'dark':'light'}}
+function home(){
+ document.body.classList.remove('tst');$('#bt').innerHTML='';hdr('h');const s=ST[S.k];
+ $('#app').innerHTML='<section class="hero"><div><div class="eb">AURELIA ACADEMY · SpeakFlow A1</div><h1>Shopping &amp; Prices</h1><p class="lead">A speaking and listening assessment on clothes, colors, numbers and prices. Listen to each model, then record your voice. Your pronunciation is checked automatically.</p><div class="stats"><div class="stat"><b>'+s.P.length+'</b><span>Parts</span></div><div class="stat"><b>'+cnt(s.P)+'</b><span>Items</span></div><div class="stat"><b>'+s.time/60+'</b><span>Minutes</span></div><div class="stat"><b>'+tot(s.P)+'</b><span>Points</span></div></div></div>'+
+ '<div class="card"><h3 style="margin:0">Candidate details</h3><label>Assessment</label><div class="seg">'+Object.entries(ST).map(([k,v])=>'<button class="pill'+(k===S.k?' on':'')+'" data-k="'+k+'">'+v.n+'</button>').join('')+'</div><p style="color:var(--m);margin:8px 0 0;font-size:14px">'+s.s+'</p><label for="nm">Full name</label><input type="text" id="nm" autocomplete="off" value="'+esc(S.name)+'" placeholder="Enter your full name">'+(SR?'':'<p style="color:var(--no)">⚠ This browser cannot recognise speech. Please open this test in Chrome, Edge or Safari.</p>')+'<button class="btn g full" id="mt">🎤 Test your microphone</button><button class="btn full" id="go" disabled>Start the test</button><details><summary>How your answers are assessed</summary><p>For every item you listen to its track the required number of times, then the microphone unlocks. Your voice is compared with the model word by word, so you see exactly which words to fix. You may record again as often as you like – the report shows how many recordings you made. Each part has its own timer and closes when time runs out. Items marked “Teacher review” are marked by your teacher.</p></details></div></section>';
+ const nm=$('#nm'),g=$('#go');nm.oninput=()=>{S.name=nm.value;g.disabled=!nm.value.trim()||!SR};nm.oninput();
+ document.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>{S.k=b.dataset.k;home()});g.onclick=start;$('#mt').onclick=e=>micTest(e.target)}
+
+function start(){S.it={};S.pi=0;S.cur=P().map(()=>0);S.sl=[];S.msg='';S.pm=P().map(p=>({st:0,left:p.T,used:0}));S.t0=new Date();S.t1=null;S.left=ST[S.k].time;S.an=1;
+ document.body.classList.add('tst');clearInterval(S.tm);S.tm=setInterval(tick,1000);R()}
+function tick(){const pm=S.pm[S.pi];if(pm&&pm.st===1){S.left--;pm.left--;pm.used++;if(pm.left<=0){if(rc)rc.stop();stopA();pm.st=2;R()}}upd();if(S.left<=0)submit()}
+function upd(){const c=$('#ck');if(c&&S.t0&&!S.t1){c.textContent=fmt(S.left);c.classList.toggle('w',S.left<=Math.min(60,ST[S.k].time*.15))}
+ const pm=S.pm[S.pi],p=P()[S.pi],k=$('#pk');if(k&&pm){k.textContent='Part '+fmt(pm.left);k.classList.toggle('w',pm.st===1&&pm.left<=Math.min(30,p.T*.2))}
+ const g=$('#pg');if(g){const[a,t]=prog();g.textContent=a+' / '+t+' done'}
+ const br=$('#br');if(br){const[a,t]=pp(S.pi);br.style.width=a/t*100+'%'}}
+const lis=(k,lbl,n,N,dis)=>'<div class="sx"><span class="sn">1</span><div class="sc"><b>'+lbl+'</b><span class="dd">'+Array.from({length:N},(_,j)=>j<n?'●':'○').join(' ')+'</span><small>Listened '+Math.min(n,N)+' / '+N+' time(s)</small></div><button class="btn'+(n>=N&&playing!==k?' g':'')+'" data-pl="'+k+'"'+(dis?' disabled':'')+'>'+(playing===k?'■ Stop':n>=N?'↻ Listen again':'▶ Play')+'</button></div>';
+const mc=(n,can)=>'<div class="sx"><span class="sn">2</span><div class="sc"><b>Record</b><small>'+(rc||can?'Press the microphone and speak':'🔒 Locked – finish listening first')+'</small></div><button class="mic big'+(rc?' rec':'')+'" id="mc"'+(rc||can?'':' disabled')+'>'+(rc?'■ Stop <span id="rd">00:00</span>':n?'🔁 Record again':'🎤 Record')+'</button></div>';
+function fbk(p,pi,i,it){let h=S.msg?'<div class="fb no"><b>'+S.msg+'</b></div>':'';if(!it.n)return h;
+ const sy='<small>You said: “'+esc(it.h)+'”</small>';
+ if(p.crit)h+='<div class="fb '+(it.ok?'ok':'no')+'"><b>'+(it.ok?'✓ Great – all checks passed':'Checklist')+'</b><ul class="cl">'+it.cr.map(x=>'<li class="s'+x.s+'">'+['✗','✓','◔'][x.s]+' '+esc(x.l)+(x.s===2?' <small style="display:inline">(teacher review)</small>':'')+'</li>').join('')+'</ul>'+sy+'<small>Speaking time: '+fmt(it.d)+'</small></div>';
+ else if(it.ok)h+='<div class="fb ok"><b>✓ Correct!</b>'+sy+'</div>';
+ else{const df=it.df,tips=[...new Set(df.w.filter(x=>x.s!=='ok'&&TIPS[x.n]).map(x=>x.n))];
+  h+='<div class="fb no"><b>✗ Not correct yet</b><div class="wr">'+df.w.map(x=>'<span class="w '+x.s+'">'+esc(x.d)+(x.s==='bad'&&x.h?'<i>“'+esc(x.h)+'”</i>':x.s==='miss'?'<i>missing</i>':'')+'</span>').join('')+'</div>'+sy+(df.ex.length?'<small>Extra words: '+esc(df.ex.join(' '))+'</small>':'')+tips.map(t=>'<span class="tip">💡 '+t+' – '+TIPS[t]+'</span>').join('')+'<small>Model: '+esc(mdl(p,i))+' · Match: '+df.acc+'%</small><small>Listen again, then record again.</small></div>'}
+ return h+'<small class="ct">🎙 Recordings: '+it.n+' · 🔁 Re-records: '+(it.n-1)+'</small>'}
+function body(p,pm,pi){
+ const lock=pm.st===2;let h=lock?'<div class="tl">⏱ Time is up for this part. Unfinished items are marked blank.</div>':'';
+ const sg=p.q&&p.tr,sp=S.sl[pi]||0,sok=!sg||sp>=p.sl;
+ if(sg)h+='<div class="trk"><b>Track '+p.tr[0]+'</b><span>Story <span class="dd">'+Array.from({length:p.sl},(_,j)=>j<sp?'●':'○').join(' ')+'</span> <small>(listen '+p.sl+'× before the questions)</small></span><button class="btn'+(sp>=p.sl&&playing!=='s'?' g':'')+'" data-pl="s"'+(lock||rc||(playing&&playing!=='s')?' disabled':'')+'>'+(playing==='s'?'■ Stop':sp>=p.sl?'↻ Listen again':'▶ Play')+'</button></div>';
+ const dis=k=>lock||rc||(k==='i'&&!sok)||(playing&&playing!==k);
+ if(p.crit){const it=IT(pi,'r');
+  return h+'<div class="q v"><div class="n">Speaking task</div>'+lis('i','🎧 Track '+p.mt+' · '+TR[p.mt][1],it.ls,p.L,dis('i'))+mc(it.n,!lock&&it.ls>=p.L&&!playing)+(rc?'<div class="lv" id="lv">Listening… speak now</div>':'')+fbk(p,pi,'r',it)+'</div>'}
+ const i=S.cur[pi],it=IT(pi,i),can=!lock&&sok&&it.ls>=p.L&&!playing;
+ h+='<div class="dots">'+p.it.map((_,j)=>{const x=IT(pi,j);return'<button class="dt'+(j===i?' cur':'')+(x.n?x.ok?' ok':' no':'')+'" data-d="'+j+'"'+(j>fp(pi)?' disabled':'')+'>'+(j+1)+'</button>'}).join('')+'</div>';
+ return h+'<div class="q v"><div class="n">Item '+(i+1)+' / '+p.it.length+' · Track '+(pi+1)+'.'+(i+1)+'</div><div class="p">'+esc(p.it[i].p)+'</div>'+(sok?'':'<div class="tl" style="margin:0 0 6px">🔒 Listen to the story first.</div>')+lis('i','🎧 Listen',it.ls,p.L,dis('i'))+mc(it.n,can)+(rc?'<div class="lv" id="lv">Listening… speak now</div>':'')+fbk(p,pi,i,it)+'</div>'}
+function R(){
+ hdr('t');const pi=S.pi,p=P()[pi],pm=S.pm[pi];
+ let h='<div class="'+(S.an?'in':'')+'"><div class="ph"><div class="eb">'+ST[S.k].n+' · '+tot([p])+' pts</div><h2>'+p.t+'</h2><p style="white-space:pre-line">'+p.ins+'</p></div>';S.an=0;
+ h+=pm.st===0?'<div class="card"><h3 style="margin-top:0">Before you start</h3><div class="kp"><span>⏱ Time for this part: <b>'+fmt(p.T)+'</b></span><span>'+(p.crit?'1 recording task':p.it.length+' items')+'</span></div><ol class="fl"><li>🎧 <b>Listen</b> to the track '+p.L+' time(s). The microphone stays locked until you have listened.</li><li>🎤 <b>Record</b> your voice.</li><li>✅ <b>Check</b> the feedback. You may record again – every recording is counted in your report.</li></ol><p style="color:var(--m);font-size:14px">The part timer starts when you press the button and the part closes when time runs out.</p><button class="btn full" id="sp">▶ Start this part</button></div>':body(p,pm,pi);
+ $('#app').innerHTML=h+'</div>';
+ const s=$('#sp');if(s)s.onclick=()=>{pm.st=1;R()};
+ document.querySelectorAll('[data-pl]').forEach(b=>b.onclick=()=>play(b.dataset.pl));
+ document.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{S.cur[pi]=+b.dataset.d;S.msg='';stopA();R()});
+ const m=$('#mc');if(m)m.onclick=rec;
+ const L=pi===P().length-1,okn=pm.st===2||(pm.st===1&&(p.crit?att(pi,'r'):att(pi,S.cur[pi]))),more=pm.st===1&&!p.crit&&S.cur[pi]<p.it.length-1;
+ $('#bt').innerHTML='<div class="bot"><div class="hr"><div class="bar"><i id="br"></i></div><button class="btn" id="nx"'+(okn&&!playing&&!rc?'':' disabled')+'>'+(more?'Next item →':L?'Finish test':'Next part →')+'</button><button class="btn g" id="sb">Submit</button></div></div>';
+ $('#nx').onclick=()=>adv(more);$('#sb').onclick=confirmSub;upd()}
+function adv(more){const pi=S.pi;stopA();S.msg='';S.an=1;
+ if(more){S.cur[pi]++;R();scrollTo(0,0);return}
+ if(pi===P().length-1){confirmSub();return}
+ S.pm[pi].st=2;S.pi++;R();scrollTo(0,0)}
+function confirmSub(){const[a,t]=prog();const m=document.createElement('div');m.className='mod';m.innerHTML='<div class="card"><h3 style="margin-top:0">Submit your test?</h3><p>'+(t-a>0?'You have <b>'+(t-a)+'</b> unanswered item(s) or part(s). ':'')+'You will not be able to change your answers after submitting.</p><div class="act"><button class="btn g" id="c1">Keep working</button><button class="btn" id="c2">Submit</button></div></div>';document.body.appendChild(m);$('#c1').onclick=()=>m.remove();$('#c2').onclick=()=>{m.remove();submit()}}
+function submit(){if(S.t1)return;S.t1=new Date();clearInterval(S.tm);stopA();if(rc)try{rc.abort()}catch(e){}rc=null;S.pm.forEach(p=>{if(p.st===1)p.st=2});document.querySelectorAll('.mod').forEach(m=>m.remove());result()}
+function fixTxt(it){if(!it.df)return'';const b=it.df.w.filter(x=>x.s==='bad').map(x=>x.d+(x.h?' (said “'+x.h+'”)':'')),m=it.df.w.filter(x=>x.s==='miss').map(x=>x.d);return[b.length?'Check: '+b.join(', '):'',m.length?'Missing: '+m.join(', '):'',it.df.ex.length?'Extra: '+it.df.ex.join(' '):''].filter(Boolean).join(' · ')}
+function result(){
+ document.body.classList.remove('tst');$('#bt').innerHTML='';hdr('r');
+ const rows=[],prt=[];let g=0,max=0,tm=0,c=0,w=0,bl=0;const rev=new Set();
+ P().forEach((p,pi)=>{const nm=p.t.split(' – ')[0],ps={g:0,m:0,n:0,r:0,l:0};
+  if(p.crit){const it=IT(pi,'r');ps.n+=it.n;ps.r+=Math.max(0,it.n-1);ps.l+=it.ls;
+   p.crit.forEach((k,j)=>{const x=it.cr&&it.cr[j],hh=it.n?it.h.slice(0,90)+(it.h.length>90?'…':''):'—';
+    if(!aut(k)){tm++;rows.push([nm,k.l,hh,'Teacher review',it.ls,it.n,'Review','—']);return}
+    max++;ps.m++;const o=x&&x.s===1;if(o){g++;ps.g++;c++}else{it.n?w++:bl++;rev.add(nm)}
+    rows.push([nm,k.l,hh,k.re?'required content':'30–45 seconds',it.ls,it.n,o?'Correct':it.n?'Incorrect':'Blank',o?'':it.n?'Missing: '+k.l:'Not recorded'])})}
+  else p.it.forEach((q,i)=>{const it=IT(pi,i);ps.n+=it.n;ps.r+=Math.max(0,it.n-1);ps.l+=it.ls;max+=p.pp;ps.m+=p.pp;const o=it.n&&it.ok;
+   if(o){g+=p.pp;ps.g+=p.pp;c++}else{it.n?w++:bl++;rev.add(nm)}
+   rows.push([nm+' · '+(i+1),q.p.replace(/\n/g,' '),it.h||'—',mdl(p,i),it.ls,it.n,o?'Correct':it.n?'Incorrect':'Blank',o?'':it.n?fixTxt(it):'Not recorded'])});
+  const pm=S.pm[pi];prt.push([nm,ps.g+' / '+ps.m,fmt(pm.used)+' / '+fmt(p.T),ps.l,ps.n,ps.r])});
+ const pc=max?g/max*100:0,used=ST[S.k].time-S.left,nm=esc(S.name),TN=prt.reduce((s,r)=>s+r[4],0),TRr=prt.reduce((s,r)=>s+r[5],0),TL=prt.reduce((s,r)=>s+r[3],0);
+ const sym={Correct:'✓ Correct',Incorrect:'✗ Incorrect – record again',Blank:'— Blank – record again',Review:'◔ Teacher review'};
+ $('#ck').textContent=fmt(used);$('#ck').title='Time used';
+ $('#app').innerHTML='<section class="res"><div class="eb">'+ST[S.k].n+' · Results</div><h1 style="font-size:clamp(34px,5vw,56px)">'+nm+'</h1><div class="card score"><div class="ring" style="--p:'+pc.toFixed(1)+'"><div><span>'+g+'<small>out of '+max+'</small></span></div></div><div><div class="kp"><span>✓ Correct: <b>'+c+'</b></span><span>✗ Incorrect: <b>'+w+'</b></span><span>— Blank: <b>'+bl+'</b></span>'+(tm?'<span>◔ Teacher review: <b>'+tm+' pts</b></span>':'')+'</div><div class="kp"><span>🎙 Recordings: <b>'+TN+'</b></span><span>🔁 Re-records: <b>'+TRr+'</b></span><span>🎧 Listens: <b>'+TL+'</b></span></div><p>Started: '+dt(S.t0)+'<br>Submitted: '+dt(S.t1)+'<br>Time used: '+fmt(used)+'</p><p><b>Parts to review:</b> '+(rev.size?[...rev].join(', '):'None')+'</p></div></div>'+
+ '<div class="act"><button class="btn" onclick="print()">Print / Save PDF report</button><button class="btn g" id="cp">Copy results</button><button class="btn g" onclick="location.reload()">Back to start</button></div>'+
+ '<div class="tw"><table><thead><tr><th>Part</th><th>Score</th><th>Time used / allowed</th><th>Listens</th><th>Recordings</th><th>Re-records</th></tr></thead><tbody>'+prt.map(r=>'<tr>'+r.map(x=>'<td>'+esc(x)+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>'+
+ '<div class="tw"><table><thead><tr><th>Item</th><th>Prompt</th><th>Your answer</th><th>Model / accepted</th><th>Listens</th><th>Rec.</th><th>Status</th><th>Where to fix</th></tr></thead><tbody>'+rows.map(r=>'<tr><td>'+esc(r[0])+'</td><td>'+esc(r[1])+'</td><td>'+esc(r[2])+'</td><td>'+esc(r[3])+'</td><td>'+r[4]+'</td><td>'+r[5]+(r[5]>1?' <small>('+(r[5]-1)+' re)</small>':'')+'</td><td class="st-'+r[6]+'">'+sym[r[6]]+'</td><td>'+esc(r[7])+'</td></tr>').join('')+'</tbody></table></div></section>';
+ $('#cp').onclick=()=>{const t='AURELIA ACADEMY – SpeakFlow A1 – Shopping & Prices – '+ST[S.k].n+'\nCandidate: '+S.name+'\nScore: '+g+' / '+max+'\nCorrect: '+c+' | Incorrect: '+w+' | Blank: '+bl+(tm?' | Teacher review: '+tm+' pts':'')+'\nRecordings: '+TN+' | Re-records: '+TRr+' | Listens: '+TL+'\nTime used: '+fmt(used)+'\nStarted: '+dt(S.t0)+'\nSubmitted: '+dt(S.t1)+'\nParts to review: '+([...rev].join(', ')||'None'),b=$('#cp');
+  (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).catch(()=>{const x=document.createElement('textarea');x.value=t;document.body.appendChild(x);x.select();document.execCommand('copy');x.remove()}).finally(()=>{b.textContent='Copied ✓'})};
+ scrollTo(0,0)}
+document.documentElement.dataset.theme=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';
+addEventListener('scroll',()=>$('#hd').classList.toggle('sc',scrollY>8),{passive:true});
+home();
+</script>
+</body>
+</html>
